@@ -1,0 +1,490 @@
+{
+  "api": {
+    "services": [
+      "StatsService",
+      "HandlerService",
+      "LoggerService",
+      "RoutingService"
+    ],
+    "tag": "api"
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": 1001,
+      "protocol": "dokodemo-door",
+      "settings": {
+        "address": "127.0.0.1"
+      },
+      "tag": "api"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20002,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "id": "xxxx"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/vmess"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "vmess-ws"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20006,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "id": "xxxx"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "vmess-grpc"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "vmess-grpc"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20010,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "id": "xxxx"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/vmess-xhttp",
+          "mode": "auto"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "vmess-xhttp"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20014,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "id": "xxxx"
+          }
+        ]
+      },
+      "streamSettings": {
+        "httpupgradeSettings": {
+          "path": "/vmess-upgrade"
+        },
+        "network": "httpupgrade",
+        "security": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "vmess-upgrade"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20001,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "id": "xxxx"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/vless"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "vless-ws"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20005,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "id": "xxxx"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "vless-grpc"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "vless-grpc"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20009,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "id": "xxxx"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/vless-xhttp",
+          "mode": "auto"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "vless-xhttp"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20013,
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "id": "xxxx"
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "httpupgradeSettings": {
+          "path": "/vless-upgrade"
+        },
+        "network": "httpupgrade",
+        "security": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "vless-upgrade"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20003,
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "password": "xxxx"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/trojan"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "trojan-ws"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20007,
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "password": "xxxx"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "trojan-grpc"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "trojan-grpc"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20011,
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "password": "xxxx"
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/trojan-xhttp",
+          "mode": "auto"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "trojan-xhttp"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20015,
+      "protocol": "trojan",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "password": "xxxx"
+          }
+        ]
+      },
+      "streamSettings": {
+        "httpupgradeSettings": {
+          "path": "/trojan-upgrade"
+        },
+        "network": "httpupgrade",
+        "security": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "trojan-upgrade"
+    },
+        {
+      "listen": "127.0.0.1",
+      "port": 20004,
+      "protocol": "shadowsocks",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "method": "chacha20-ietf-poly1305",
+            "password": "xxxx"
+          }
+        ],
+        "network": "tcp,udp"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/shadowsocks"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "shadowsocks-ws"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20008,
+      "protocol": "shadowsocks",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "method": "chacha20-ietf-poly1305",
+            "password": "xxxx"
+          }
+        ],
+        "network": "tcp,udp"
+      },
+      "streamSettings": {
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "shadowsocks-grpc"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "shadowsocks-grpc"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20012,
+      "protocol": "shadowsocks",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "method": "chacha20-ietf-poly1305",
+            "password": "xxxx"
+          }
+        ],
+        "network": "tcp,udp"
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/shadowsocks-xhttp",
+          "mode": "auto"
+        }
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "shadowsocks-xhttp"
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": 20016,
+      "protocol": "shadowsocks",
+      "settings": {
+        "clients": [
+          {
+            "email": "xd-tunnel-vpns",
+            "method": "chacha20-ietf-poly1305",
+            "password": "xxxx"
+          }
+        ],
+        "network": "tcp,udp"
+      },
+      "streamSettings": {
+        "httpupgradeSettings": {
+          "path": "/shadowsocks-upgrade"
+        },
+        "network": "httpupgrade",
+        "security": "none"
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "tag": "shadowsocks-upgrade"
+    }
+  ],
+  "log": {
+    "access": "/var/log/xray/access.log",
+    "error": "/var/log/xray/error.log",
+    "loglevel": "info"
+  },
+  "outbounds": [
+    {
+      "tag": "direct",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blocked",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ],
+  "policy": {
+    "levels": {
+      "0": {
+        "statsUserDownlink": true,
+        "statsUserUplink": true,
+        "statsUserOnline": true
+      }
+    },
+    "system": {
+      "statsInboundDownlink": true,
+      "statsInboundUplink": true,
+      "statsOutboundDownlink": true,
+      "statsOutboundUplink": true
+    }
+  },
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "10.0.0.0/8",
+          "100.64.0.0/10",
+          "169.254.0.0/16",
+          "172.16.0.0/12",
+          "192.168.0.0/16",
+          "fc00::/7",
+          "fe80::/10"
+        ],
+        "outboundTag": "blocked",
+        "ruleTag": "rule_private_ip"
+      },
+      {
+        "type": "field",
+        "protocol": ["bittorrent"],
+        "outboundTag": "blocked",
+        "ruleTag": "rule_bittorrent"
+      },
+      {
+        "type": "field",
+        "inboundTag": ["api"],
+        "outboundTag": "api",
+        "ruleTag": "rule_api"
+      }
+    ]
+  },
+  "stats": {}
+}
