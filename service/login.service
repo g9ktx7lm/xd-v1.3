@@ -1,0 +1,23 @@
+[Unit]
+Description=XDTunnel IP Limit Monitor Daemon
+Documentation=https://t.me/SukaPediaCS
+After=network.target xray.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+ExecStart=/usr/local/sbin/login.sh
+Restart=always
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=xdtunnel-login
+
+# ---------- Security ----------
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,15 @@
+[Unit]
+Description=Haproxy Load Balancer
+Documentation=https://t.me/SukaPediaCS
+After=network-online.target rsyslog.service
+
+[Service]
+ExecStart=/usr/sbin/haproxy -Ws -f /etc/haproxy/haproxy.cfg -p /var/run/haproxy.pid
+Restart=always
+RestartSec=5s
+RestartPreventExitStatus=23
+LimitNPROC=10000
+LimitNOFILE=1000000
+
+[Install]
+WantedBy=multi-user.target
