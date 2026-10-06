@@ -166,5 +166,7 @@ EOF
 chmod 600 "$DB"
 chown root:root "$DB"
 
+rm -f "$0"
+
 echo "✓ users.db initialized"
 echo "  Tables: vmess, vless, trojan, shadowsocks, ssh, settings, user_log, usage_state"
