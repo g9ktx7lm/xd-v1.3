@@ -8,14 +8,13 @@ Wants=network-online.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/local/sbin/quota.sh
+ExecStart=/usr/sbin/quota.sh
 Restart=always
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=xdtunnel-quota
 
-# ---------- Security ----------
 NoNewPrivileges=true
 PrivateTmp=true
 
