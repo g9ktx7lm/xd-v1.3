@@ -8,14 +8,13 @@ Wants=network-online.target
 Type=simple
 User=root
 Group=root
-ExecStart=/usr/local/sbin/login.sh
+ExecStart=/usr/sbin/login.sh
 Restart=always
 RestartSec=10
 StandardOutput=journal
 StandardError=journal
 SyslogIdentifier=xdtunnel-login
 
-# ---------- Security ----------
 NoNewPrivileges=true
 PrivateTmp=true
 
