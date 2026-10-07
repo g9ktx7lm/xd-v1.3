@@ -1,0 +1,17 @@
+[Unit]
+Description=XDTunnel Auto Restore Xray Users On Boot
+Documentation=https://t.me/SukaPediaCS
+After=network-online.target xray.service
+Wants=network-online.target
+Requires=xray.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/xray-startup
+RemainAfterExit=yes
+StandardOutput=journal
+StandardError=journal
+TimeoutStartSec=120
+
+[Install]
+WantedBy=multi-user.target
